@@ -108,51 +108,7 @@ class ObjectDetection:
             # "mask": masks[0].tolist(),  # Convert numpy array to list
             # "score": scores[0].item()    # Convert numpy scalar to Python float
         }
-        # Based on https://huggingface.co/spaces/nateraw/detr-object-detection/blob/main/app.py
-        # Read png from input
-        # image = Image.open(io.BytesIO(img_data_in)).convert("RGB")
-
-        # # Make prediction
-        # inputs = self.feature_extractor(image, return_tensors="pt")
-        # outputs = self.model(**inputs)
-        # img_size = torch.tensor([tuple(reversed(image.size))])
-        # processed_outputs = (
-        #     self.feature_extractor.post_process_object_detection(
-        #         outputs=outputs,
-        #         target_sizes=img_size,
-        #         threshold=0,
-        #     )
-        # )
-        # output_dict = processed_outputs[0]
-
-        # # Grab boxes
-        # keep = output_dict["scores"] > 0.7
-        # boxes = output_dict["boxes"][keep].tolist()
-        # scores = output_dict["scores"][keep].tolist()
-        # labels = output_dict["labels"][keep].tolist()
-
-        # # Plot bounding boxes
-        # colors = list(ImageColor.colormap.values())
-        # font = ImageFont.truetype(
-        #     "/usr/share/fonts/truetype/freefont/FreeMono.ttf", 18
-        # )
-        # output_image = Image.new("RGBA", (image.width, image.height))
-        # output_image_draw = ImageDraw.Draw(output_image)
-        # for _score, box, label in zip(scores, boxes, labels):
-        #     color = colors[label % len(colors)]
-        #     text = self.model.config.id2label[label]
-        #     box = tuple(map(int, box))
-        #     output_image_draw.rectangle(box, outline=color)
-        #     output_image_draw.text(
-        #         box[:2], text, font=font, fill=color, width=3
-        #     )
-
-        # # Return PNG as bytes
-        # with io.BytesIO() as output_buf:
-        #     output_image.save(output_buf, format="PNG")
-        #     return output_buf.getvalue()
-    
-    
+     
     @modal.method()
     def generate_3d_video(self, email, title, description, frames, selected_frame_idx, selected_point):
         print(email)
